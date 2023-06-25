@@ -16,6 +16,8 @@ public class Hero : MonoBehaviour
     [SerializeField] private Collider2D[] _interactableResult = new Collider2D[1];
     [SerializeField] private LayerMask _interactionLayer;
 
+    [SerializeField] private SpawnComponent _footStepParticle;
+
     private bool _allowDoubleJump;
     private bool _isGrounded;
 
@@ -23,7 +25,6 @@ public class Hero : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
 
     private static readonly int IsGroundKey = Animator.StringToHash("is-grounded");
     private static readonly int IsRunning = Animator.StringToHash("is-running");
@@ -34,7 +35,6 @@ public class Hero : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetDirection(Vector2 direction)
@@ -101,12 +101,12 @@ public class Hero : MonoBehaviour
         if (_moveDirection.x > 0)
         {
             //TurnRight
-            _spriteRenderer.flipX = false;
+            transform.localScale = Vector3.one;
         }
         else if (_moveDirection.x < 0)
         {
             //TurnLeft
-            _spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -132,7 +132,6 @@ public class Hero : MonoBehaviour
     {
         // Нужно получить персечение со всеми пересекающимися объектами
         var size = Physics2D.OverlapCircleNonAlloc(gameObject.transform.position, _interactionRadius, _interactableResult, _interactionLayer);
-
         for (int i = 0; i < size; i++)
         {
             var interactable = _interactableResult[i].GetComponent<InteractableComponent>();
@@ -141,6 +140,11 @@ public class Hero : MonoBehaviour
                 interactable.Interact();
             }
         }
+    }
+
+    public void SpawnFootStepDust()
+    {
+        _footStepParticle.Spawn();
     }
 
 }
