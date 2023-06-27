@@ -16,7 +16,10 @@ public class Hero : MonoBehaviour
     [SerializeField] private Collider2D[] _interactableResult = new Collider2D[1];
     [SerializeField] private LayerMask _interactionLayer;
 
+    [Space] [Header("Particles")]
     [SerializeField] private SpawnComponent _footStepParticle;
+    [SerializeField] private SpawnComponent _jumpParticle;
+    [SerializeField] private SpawnComponent _slamDownParticle;
 
     private bool _allowDoubleJump;
     private bool _isGrounded;
@@ -87,10 +90,12 @@ public class Hero : MonoBehaviour
         if (_isGrounded)
         {
             yVelocity += _jumpSpeed;
+            _jumpParticle.Spawn();
         }
         else if (_allowDoubleJump)
         {
             yVelocity = _jumpSpeed;
+            _jumpParticle.Spawn();
             _allowDoubleJump = false;
         }
         return yVelocity;
