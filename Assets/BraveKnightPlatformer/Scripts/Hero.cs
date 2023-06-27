@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using KnightPlatformer.Utils;
 
 public class Hero : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Hero : MonoBehaviour
     [SerializeField] private SpawnComponent _footStepParticle;
     [SerializeField] private SpawnComponent _jumpParticle;
     [SerializeField] private SpawnComponent _slamDownParticle;
+    [SerializeField] private float _slamDownVelocity;
 
     private bool _allowDoubleJump;
     private bool _isGrounded;
@@ -150,6 +152,19 @@ public class Hero : MonoBehaviour
     public void SpawnFootStepDust()
     {
         _footStepParticle.Spawn();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.IsInLayer(_groundLayer))
+        {
+            // collision velocity
+            var contact = other.contacts[0];
+            if (contact.relativeVelocity.y >= _slamDownVelocity)
+            {
+                _slamDownParticle.Spawn();
+            }
+        }
     }
 
 }
