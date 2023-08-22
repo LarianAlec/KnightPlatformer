@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyComponent : MonoBehaviour
 {
-    [SerializeField] private GameObject _object;
+    [SerializeField] private GameObject _objectToDestroy;
 
     public void DestroySelf()
     {
@@ -13,6 +13,6 @@ public class DestroyComponent : MonoBehaviour
 
     public void DestroyObject()
     {
-        Destroy(_object);
+        Destroy(_objectToDestroy);
     }
 }

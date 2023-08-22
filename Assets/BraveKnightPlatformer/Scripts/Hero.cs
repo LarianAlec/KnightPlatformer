@@ -7,15 +7,20 @@ using KnightPlatformer.Utils;
 
 public class Hero : MonoBehaviour
 {
+    [Space] [Header("Properties")]
     [SerializeField] private float _jumpSpeed = 10f;
     [SerializeField] private float _jumpOnDamage = 5f;
     [SerializeField] private float _speed = 5.0f;
+    [SerializeField] private int _damage = 1;
+
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private Vector3 _groundCheckPositionDelta = new Vector3(0.03f, 0.16f, 0);
     [SerializeField] private float _groundCheckRadius = 0.25f;
     [SerializeField] private float _interactionRadius = 1.0f;
     [SerializeField] private Collider2D[] _interactableResult = new Collider2D[1];
     [SerializeField] private LayerMask _interactionLayer;
+
+    [SerializeField] private CheckCircleOverlap _attackRange;
 
     [Space] [Header("Particles")]
     [SerializeField] private SpawnComponent _footStepParticle;
@@ -27,14 +32,14 @@ public class Hero : MonoBehaviour
     private bool _isGrounded;
 
     private Vector2 _moveDirection;
-
     private Rigidbody2D _rigidbody;
-    private Animator _animator;
 
+    private Animator _animator;
     private static readonly int IsGroundKey = Animator.StringToHash("is-grounded");
     private static readonly int IsRunning = Animator.StringToHash("is-running");
     private static readonly int VerticalVelocity = Animator.StringToHash("vertical-velocity");
     private static readonly int IsHit = Animator.StringToHash("hit");
+    private static readonly int AttackKey = Animator.StringToHash("attack");
 
     private void Awake()
     {
@@ -145,6 +150,27 @@ public class Hero : MonoBehaviour
             if (interactable != null)
             {
                 interactable.Interact();
+            }
+        }
+    }
+
+    public void StartAttackAnimation()
+    {
+        Debug.Log("Attack Animation!");
+        _animator.SetTrigger(AttackKey);
+    }
+
+    public void Attack()
+    {
+        Debug.Log("Attack!");
+        _rigidbody.velocity = Vector2.zero;
+        var objectsInRange = _attackRange.GetObjectsInRange();
+        foreach(var obj in objectsInRange)
+        {
+            var hp = obj.GetComponent<HealthComponent>();
+            if (hp != null)
+            {
+                hp.ApplyDamage(_damage);
             }
         }
     }

@@ -12,6 +12,8 @@ public class HealthComponent : MonoBehaviour
 
     public void ApplyDamage(int damageValue)
     {
+        if (!gameObject.CompareTag("Enemy"))  return; 
+
         _health -= damageValue;
         _onDamage?.Invoke();
 
@@ -20,6 +22,7 @@ public class HealthComponent : MonoBehaviour
         {
             _onDie?.Invoke();
         }
+
     }
 
     public void Heal(int healValue)

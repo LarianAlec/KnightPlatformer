@@ -75,15 +75,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1889246015, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.78125, y: 0.71875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &-3779645102223001571
@@ -99,31 +99,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 18
-  _loop: 0
-  _sprites:
-  - {fileID: 1208995279, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: 1970368335, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: -1734894814, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: 632706693, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: -1858649092, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: -1736521862, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: -601404242, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
-  - {fileID: -1691129333, guid: 7917113d28961d94fbdcbf86bfd24423, type: 3}
   _onComplete:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -529614601415936464}
-        m_TargetAssemblyTypeName: DestroyComponent, Assembly-CSharp
-        m_MethodName: DestroySelf
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
+  _clips:
+  - _name: JumpParticleAnimation
+    _sprites:
+    - {fileID: 1889246015, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    - {fileID: -1709186495, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    - {fileID: -333084852, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    - {fileID: -2096101247, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    - {fileID: 1958740391, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    - {fileID: 894544562, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    - {fileID: 1428538991, guid: 2803b2aad2f6ed4419465ae26b06f442, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -529614601415936464}
+          m_TargetAssemblyTypeName: DestroyComponent, Assembly-CSharp
+          m_MethodName: DestroySelf
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!114 &-529614601415936464
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class TeleportComponent : MonoBehaviour
 
     IEnumerator Teleporting(GameObject target)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         target.transform.position = _transformDestination.position;
     }
 }
