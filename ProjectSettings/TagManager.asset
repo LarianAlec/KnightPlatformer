@@ -45,6 +45,9 @@ TagManager:
   - name: Trees
     uniqueID: 2271415581
     locked: 0
+  - name: Level
+    uniqueID: 279597689
+    locked: 0
   - name: Ground
     uniqueID: 741301
     locked: 0
@@ -54,12 +57,9 @@ TagManager:
   - name: Props
     uniqueID: 2582057831
     locked: 0
-  - name: Level
-    uniqueID: 279597689
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Interactable
     uniqueID: 2191123327
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0

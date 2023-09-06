@@ -5,6 +5,7 @@ using UnityEngine;
 public class TeleportComponent : MonoBehaviour
 {
     [SerializeField] private Transform _transformDestination;
+    [SerializeField] private float _delay = 0.3f;
 
     public void Teleport(GameObject target)
     {
@@ -14,7 +15,7 @@ public class TeleportComponent : MonoBehaviour
 
     IEnumerator Teleporting(GameObject target)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(_delay);
         target.transform.position = _transformDestination.position;
     }
 }
