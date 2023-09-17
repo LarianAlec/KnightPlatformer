@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,25 +8,36 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private UnityEvent _onDie;
     [SerializeField] private UnityEvent _onHeal;
+    [SerializeField] private HealthChangeEvent _onChange;
 
-    public void ApplyDamage(int damageValue)
+    public void ModifyHealth(int healthDelta)
     {
-        if (!gameObject.CompareTag("Enemy"))  return; 
+        _health += healthDelta;
+        _onChange?.Invoke(_health);
 
-        _health -= damageValue;
-        _onDamage?.Invoke();
+        if (healthDelta < 0)
+        {
+            _onDamage?.Invoke();
+        }
 
-        // Die
-        if (_health <= 0)
+        if (healthDelta > 0)
+        {
+            _onHeal?.Invoke();
+        }
+
+        if (_health <=0)
         {
             _onDie?.Invoke();
         }
-
     }
 
-    public void Heal(int healValue)
+    public void SetHealth(int health)
     {
-        _health += healValue;
-        _onHeal?.Invoke();
+        _health = health;
+    }
+
+    [Serializable]
+    public class HealthChangeEvent : UnityEvent<int> 
+    {
     }
 }

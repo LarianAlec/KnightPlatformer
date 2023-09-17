@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: 9305d6516d0da3849b772916498f826a
+  - enabled: 1
+    path: Assets/Scenes/Level_1_secret_room.unity
+    guid: cb9b25774d6b1c142871fe7511b2b5cb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d5dc7ab5e5c8834418b497be63144cf6, type: 2}

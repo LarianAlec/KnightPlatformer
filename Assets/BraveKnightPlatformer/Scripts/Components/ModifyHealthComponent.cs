@@ -12,7 +12,7 @@ public class ModifyHealthComponent : MonoBehaviour
         var healthComponent = target.GetComponent<HealthComponent>();
         if (healthComponent != null)
         {
-            healthComponent.ApplyDamage(_damageValue);
+            healthComponent.ModifyHealth(-_damageValue);
         }
     }
 
@@ -21,7 +21,7 @@ public class ModifyHealthComponent : MonoBehaviour
         var healthComponent = target.GetComponent<HealthComponent>();
         if (healthComponent != null)
         {
-            healthComponent.Heal(_healValue);
+            healthComponent.ModifyHealth(_healValue);
         }
     }
 }

@@ -37,7 +37,7 @@
                 {
                     "name": "2D Vector WASD",
                     "id": "8c54dd45-86b4-46ae-bbb2-d77d30f9802d",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -46,7 +46,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "Up",
                     "id": "67eccf0d-f389-4bb2-8e6d-b555bb1fb207",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -57,7 +57,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "Down",
                     "id": "d8ca2f2a-b73d-4afa-a85e-7637738bf135",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -68,7 +68,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "Left",
                     "id": "fb08bb51-b5c0-47d0-b4a4-fbe9e847c29c",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -79,8 +79,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "80de99c4-3aa8-4539-b4d1-9a6650d15297",
+                    "name": "Right",
+                    "id": "8b6deef1-a17b-4312-9615-d4034ebbf726",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",

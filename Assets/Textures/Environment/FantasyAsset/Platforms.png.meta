@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7045a8ff8dd071e4589bcf39f4987938
+guid: c80f5a43d9bfd0045be4d06a7c031716
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -131,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: r_Hurt_animation_0
+      name: Platforms_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 394
+        y: 377
+        width: 44
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6878cec40edf72d4499bd5bcb2e70bc4
-      internalID: -1925888527
+      spriteID: d5f3c716b8882e845bdb62d9d05c117e
+      internalID: 1788750654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: r_Hurt_animation_1
+      name: Platforms_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 368
+        y: 336
+        width: 80
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,50 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01cd09f1378197e4088e60ba48b27aef
-      internalID: 1490781599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: r_Hurt_animation_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24b66f3b0c6b5894b9b421db0ac6496f
-      internalID: 1974369173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: r_Hurt_animation_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a771bed99bc9154b9298f73c0dff256
-      internalID: -834756309
+      spriteID: 085bbfa2a7011a0438939e9c58611204
+      internalID: 802107512
       vertices: []
       indices: 
       edges: []
@@ -225,10 +183,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      r_Hurt_animation_0: -1925888527
-      r_Hurt_animation_1: 1490781599
-      r_Hurt_animation_2: 1974369173
-      r_Hurt_animation_3: -834756309
+      Platforms_0: 1788750654
+      Platforms_1: 802107512
+      Platforms_10: 2078701785
+      Platforms_11: 913594686
+      Platforms_12: -1457815167
+      Platforms_13: -1881273134
+      Platforms_14: -1293578068
+      Platforms_15: 1205935053
+      Platforms_16: -1059146535
+      Platforms_17: 1871668627
+      Platforms_18: -2035174188
+      Platforms_2: -638354630
+      Platforms_3: -1443040791
+      Platforms_4: -894415660
+      Platforms_5: -1001828846
+      Platforms_6: 773791090
+      Platforms_7: -1234325576
+      Platforms_8: 1555517623
+      Platforms_9: -824591274
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
