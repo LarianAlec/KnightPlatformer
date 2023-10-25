@@ -59351,6 +59351,10 @@ PrefabInstance:
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7924861904893285357, guid: 279859958ee5efe4a8ff591a255d4e9f, type: 3}
+      propertyPath: m_Mass
+      value: 0.3963671
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -59770,6 +59774,10 @@ PrefabInstance:
     - target: {fileID: 2590621640256777836, guid: ad457bc9e4cd47b4bb9d76cd00e39487, type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597799147202984148, guid: ad457bc9e4cd47b4bb9d76cd00e39487, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

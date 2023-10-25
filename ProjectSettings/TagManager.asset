@@ -15,7 +15,7 @@ TagManager:
   - Ground
   - Interactables
   - Trash
-  - 
+  - Wall
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Interactable
     uniqueID: 2191123327
+    locked: 0
+  - name: 
+    uniqueID: 1427060139
     locked: 0

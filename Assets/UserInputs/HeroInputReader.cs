@@ -1,38 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
+using KnightPlatformer.Creatures;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class HeroInputReader : MonoBehaviour
+
+namespace KnightPlatformer
 {
-    private Hero _hero;
-    private Vector2 _direction;
 
-    private void Awake()
-    {
-        _hero = GetComponent<Hero>();
-    }
 
-    public void OnMovement(InputAction.CallbackContext context)
+    public class HeroInputReader : MonoBehaviour
     {
-        _direction = context.ReadValue<Vector2>();
-        _hero.SetDirection(_direction);
-    }
+        [SerializeField] private Hero _hero;
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        // Если мы клавишу отпустили "context.canceled"
-        if (context.canceled)
+        public void OnMovement(InputAction.CallbackContext context)
         {
-            _hero.Interact();
+            var direction = context.ReadValue<Vector2>();
+            _hero.SetDirection(direction);
         }
-    }
 
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.started)
+        public void OnInteract(InputAction.CallbackContext context)
         {
-            _hero.StartAttackAnimation();
+            // Если мы клавишу отпустили "context.canceled"
+            if (context.canceled)
+            {
+                _hero.Interact();
+            }
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.Attack();
+            }
         }
     }
 }

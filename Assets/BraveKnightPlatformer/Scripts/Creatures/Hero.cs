@@ -10,14 +10,15 @@ namespace KnightPlatformer.Creatures
     {
         [Space]
         [Header("Interaction check layer")]
-        [SerializeField] private float _interactionRadius = 1.0f;
-        [SerializeField] private Collider2D[] _interactionResult = new Collider2D[1];
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private LayerCheck _wallCheck;
 
         [Space]
         [Header("Particles")]
         [SerializeField] private float _slamDownVelocity;
+
+        [SerializeField] private float _interactionRadius = 1.0f;
+        [SerializeField] private Collider2D[] _interactionResult = new Collider2D[1];
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
@@ -136,22 +137,9 @@ namespace KnightPlatformer.Creatures
             }
         }
 
-
-
-        public void OnDoAttack()
+        public override void Attack()
         {
-
-            _rigidbody.velocity = Vector2.zero;
-            var objectsInRange = _attackRange.GetObjectsInRange();
-            foreach (var obj in objectsInRange)
-            {
-                var hp = obj.GetComponent<HealthComponent>();
-                if (hp != null)
-                {
-                    hp.ModifyHealth(-_damage);
-                }
-            }
+            base.Attack();
         }
-
     }
 }

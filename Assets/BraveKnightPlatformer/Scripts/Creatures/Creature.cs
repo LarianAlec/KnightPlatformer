@@ -15,10 +15,9 @@ namespace KnightPlatformer.Creatures
         [SerializeField] private int _damage = 1;
 
         [Space]
-        [Header("Ground check layer")]
+        [Header("Checkers")]
         [SerializeField] protected LayerMask _groundLayer;
-        [SerializeField] private Vector3 _groundCheckPositionDelta = new Vector3(0.03f, 0.16f, 0);
-        [SerializeField] private float _groundCheckRadius = 0.25f;
+        [SerializeField] private LayerCheck _groundCheck;
 
         [SerializeField] private CheckCircleOverlap _attackRange;
         [SerializeField] protected SpawnListComponent _particles;
@@ -48,7 +47,7 @@ namespace KnightPlatformer.Creatures
 
         protected virtual void Update()
         {
-            _isGrounded = IsGrounded();
+            _isGrounded = _groundCheck.IsTouchingLayer;
         }
 
         private void FixedUpdate()
@@ -121,27 +120,24 @@ namespace KnightPlatformer.Creatures
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageVelocity);
         }
 
-        public void Attack()
+        public virtual void Attack()
         {
             _animator.SetTrigger(AttackKey);
         }
 
+        public void OnDoAttack()
+        {
+
+            var objectsInRange = _attackRange.GetObjectsInRange();
+            foreach (var obj in objectsInRange)
+            {
+                var hp = obj.GetComponent<HealthComponent>();
+                if (hp != null)
+                {
+                    hp.ModifyHealth(-_damage);
+                }
+            }
+        }
+
     } 
 }
-
-/* DELETED
-        private bool IsGrounded()
-        {
-            var hit = Physics2D.CircleCast(transform.position + _groundCheckPositionDelta, _groundCheckRadius, Vector2.down, 0, _groundLayer);
-            return hit.collider != null;
-        }
-
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            Handles.color = IsGrounded() ? HandlesUtils.TransparentGreen : HandlesUtils.TransparentRed;
-            Handles.DrawSolidDisc(transform.position + _groundCheckPositionDelta, Vector3.forward, _groundCheckRadius);
-        }
-#endif
-        
-        */
