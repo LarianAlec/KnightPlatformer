@@ -12,7 +12,6 @@ namespace KnightPlatformer.Creatures
         [SerializeField] private float _speed = 5.0f;
         [SerializeField] protected float _jumpSpeed = 10f;
         [SerializeField] private float _damageVelocity = 5f;
-        [SerializeField] private int _damage = 1;
 
         [Space]
         [Header("Checkers")]
@@ -22,10 +21,10 @@ namespace KnightPlatformer.Creatures
         [SerializeField] private CheckCircleOverlap _attackRange;
         [SerializeField] protected SpawnListComponent _particles;
 
-        protected Rigidbody2D _rigidbody;
-        protected Vector2 _direction;
-        protected Animator _animator;
-        protected bool _isGrounded;
+        protected Rigidbody2D Rigidbody;
+        protected Vector2 Direction;
+        protected Animator Animator;
+        protected bool IsGrounded;
         private bool _isJumping;
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-grounded");
@@ -36,39 +35,39 @@ namespace KnightPlatformer.Creatures
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
+            Rigidbody = GetComponent<Rigidbody2D>();
+            Animator = GetComponent<Animator>();
         }
 
         public void SetDirection(Vector2 direction)
         {
-            _direction = direction;
+            Direction = direction;
         }
 
         protected virtual void Update()
         {
-            _isGrounded = _groundCheck.IsTouchingLayer;
+            IsGrounded = _groundCheck.IsTouchingLayer;
         }
 
         private void FixedUpdate()
         {
-            var xVelocity = _direction.x * _speed;
+            var xVelocity = Direction.x * _speed;
             var yVelocity = CalculateYVelocity();
-            _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+            Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
 
-            _animator.SetBool(IsGroundKey, _isGrounded);
-            _animator.SetBool(IsRunning, _direction.x != 0);
-            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
+            Animator.SetBool(IsGroundKey, IsGrounded);
+            Animator.SetBool(IsRunning, Direction.x != 0);
+            Animator.SetFloat(VerticalVelocity, Rigidbody.velocity.y);
 
             UpdateSpriteDirection();
         }
 
         protected virtual float CalculateYVelocity()
         {
-            var yVelocity = _rigidbody.velocity.y;
-            var isJumpPressing = _direction.y > 0;
+            var yVelocity = Rigidbody.velocity.y;
+            var isJumpPressing = Direction.y > 0;
 
-            if (_isGrounded)
+            if (IsGrounded)
             {
                 _isJumping = false;
             }
@@ -77,10 +76,10 @@ namespace KnightPlatformer.Creatures
             {
                 _isJumping = true;
 
-                var isFalling = _rigidbody.velocity.y <= 0.001f;
+                var isFalling = Rigidbody.velocity.y <= 0.001f;
                 yVelocity = isFalling ? CalculateJumpVelocity(yVelocity) : yVelocity;
             }
-            else if (_rigidbody.velocity.y > 0 && _isJumping)
+            else if (Rigidbody.velocity.y > 0 && _isJumping)
             {
                 yVelocity *= 0.9f;
             }
@@ -90,7 +89,7 @@ namespace KnightPlatformer.Creatures
 
         protected virtual float CalculateJumpVelocity(float yVelocity)
         {
-            if (_isGrounded)
+            if (IsGrounded)
             {
                 yVelocity = _jumpSpeed;
                 _particles.Spawn("Jump");
@@ -101,12 +100,12 @@ namespace KnightPlatformer.Creatures
 
         private void UpdateSpriteDirection()
         {
-            if (_direction.x > 0)
+            if (Direction.x > 0)
             {
                 //TurnRight
                 transform.localScale = Vector3.one;
             }
-            else if (_direction.x < 0)
+            else if (Direction.x < 0)
             {
                 //TurnLeft
                 transform.localScale = new Vector3(-1, 1, 1);
@@ -116,27 +115,18 @@ namespace KnightPlatformer.Creatures
         public virtual void TakeDamage()
         {
             _isJumping = false;
-            _animator.SetTrigger(IsHit);
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageVelocity);
+            Animator.SetTrigger(IsHit);
+            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
         }
 
         public virtual void Attack()
         {
-            _animator.SetTrigger(AttackKey);
+            Animator.SetTrigger(AttackKey);
         }
 
         public void OnDoAttack()
         {
-
-            var objectsInRange = _attackRange.GetObjectsInRange();
-            foreach (var obj in objectsInRange)
-            {
-                var hp = obj.GetComponent<HealthComponent>();
-                if (hp != null)
-                {
-                    hp.ModifyHealth(-_damage);
-                }
-            }
+            _attackRange.Check();
         }
 
     } 

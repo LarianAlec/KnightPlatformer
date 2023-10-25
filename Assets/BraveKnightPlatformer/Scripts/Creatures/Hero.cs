@@ -10,6 +10,7 @@ namespace KnightPlatformer.Creatures
     {
         [Space]
         [Header("Interaction check layer")]
+        [SerializeField] private CheckCircleOverlap _interactionCheck;
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private LayerCheck _wallCheck;
 
@@ -17,8 +18,7 @@ namespace KnightPlatformer.Creatures
         [Header("Particles")]
         [SerializeField] private float _slamDownVelocity;
 
-        [SerializeField] private float _interactionRadius = 1.0f;
-        [SerializeField] private Collider2D[] _interactionResult = new Collider2D[1];
+
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
@@ -29,7 +29,7 @@ namespace KnightPlatformer.Creatures
         protected override void Awake()
         {
             base.Awake();
-            _defaultGravityScale = _rigidbody.gravityScale;
+            _defaultGravityScale = Rigidbody.gravityScale;
         }
 
         private void Start()
@@ -45,31 +45,27 @@ namespace KnightPlatformer.Creatures
             _session.Data.Hp = currentHealth;
         }
 
-        
-
         protected override void Update()
         {
             base.Update();
 
-            if (_wallCheck.IsTouchingLayer && _direction.x == transform.localScale.x)
+            if (_wallCheck.IsTouchingLayer && Direction.x == transform.localScale.x)
             {
                 _isOnWall = true;
-                _rigidbody.gravityScale = 0;
+                Rigidbody.gravityScale = 0;
             }
             else
             {
                 _isOnWall = false;
-                _rigidbody.gravityScale = _defaultGravityScale;
+                Rigidbody.gravityScale = _defaultGravityScale;
             }
         }
 
-       
-
         protected override float CalculateYVelocity()
         {
-            var isJumpPressing = _direction.y > 0;
+            var isJumpPressing = Direction.y > 0;
 
-            if (_isGrounded || _isOnWall)
+            if (IsGrounded || _isOnWall)
             {
                 _allowDoubleJump = true;
             }
@@ -83,16 +79,15 @@ namespace KnightPlatformer.Creatures
 
         protected override float CalculateJumpVelocity(float yVelocity)
         {
-
-            if (!_isGrounded && _allowDoubleJump)
+            if (!IsGrounded && _allowDoubleJump)
             {
                 _particles.Spawn("Jump");
                 _allowDoubleJump = false;
                 return _jumpSpeed;
             }
+
             return base.CalculateJumpVelocity(yVelocity);
         }
-
 
         public void AddCoins(int coins)
         {
@@ -107,21 +102,7 @@ namespace KnightPlatformer.Creatures
 
         public void Interact()
         {
-            // Нужно получить персечение со всеми пересекающимися объектами
-            var size = Physics2D.OverlapCircleNonAlloc(
-                gameObject.transform.position,
-                _interactionRadius,
-                _interactionResult,
-                _interactionLayer);
-
-            for (int i = 0; i < size; i++)
-            {
-                var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                }
-            }
+            _interactionCheck.Check();
         }
 
         private void OnCollisionEnter2D(Collision2D other)

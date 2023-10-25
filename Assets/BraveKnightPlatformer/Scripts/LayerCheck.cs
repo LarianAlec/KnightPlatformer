@@ -26,5 +26,6 @@ namespace KnightPlatformer
         {
             _isTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
+
     }
 }
