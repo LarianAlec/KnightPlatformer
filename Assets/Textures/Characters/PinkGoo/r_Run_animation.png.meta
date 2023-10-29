@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 51159e70bb7620645918127b6d636896
+guid: fb9b6556ea8b1454aad437bee6e0a60e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -131,12 +131,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "r_\u0410ttack_animation_0"
+      name: r_Run_animation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 61
+        width: 64
         height: 32
       alignment: 9
       pivot: {x: 0.7, y: 0.45}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0a3251c23021f84e94a99d47700a79e
-      internalID: -1009694635
+      spriteID: 58e7e5677bf164b4b82d0a3878c562c7
+      internalID: 95239542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "r_\u0410ttack_animation_1"
+      name: r_Run_animation_1
       rect:
         serializedVersion: 2
-        x: 61
+        x: 64
         y: 0
-        width: 61
+        width: 64
         height: 32
       alignment: 9
       pivot: {x: 0.7, y: 0.45}
@@ -166,19 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c0297fcbbfbc347a7ed9908c8a8bb0
-      internalID: 2049553872
+      spriteID: 158c7667f2992e84482fb57551713caa
+      internalID: 868192547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "r_\u0410ttack_animation_2"
+      name: r_Run_animation_2
       rect:
         serializedVersion: 2
-        x: 122
+        x: 128
         y: 0
-        width: 61
+        width: 64
         height: 32
       alignment: 9
       pivot: {x: 0.7, y: 0.45}
@@ -187,71 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d1454f9cf0bd9b43bf06e7f945ddd6e
-      internalID: -1169774426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "r_\u0410ttack_animation_3"
-      rect:
-        serializedVersion: 2
-        x: 183
-        y: 0
-        width: 61
-        height: 32
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4007c2e6a190ec84a8ede7aede15aada
-      internalID: 1829959873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "r_\u0410ttack_animation_4"
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 0
-        width: 61
-        height: 32
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 270a387c3e9ff874f8cd2c3a4b16bfe0
-      internalID: -1383140890
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "r_\u0410ttack_animation_5"
-      rect:
-        serializedVersion: 2
-        x: 305
-        y: 0
-        width: 61
-        height: 32
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e90158f1cc4de349a5f9893990b9f73
-      internalID: -320509652
+      spriteID: b12b452036b8f414b9036f1423fa91ef
+      internalID: 1094639001
       vertices: []
       indices: 
       edges: []
@@ -267,12 +204,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "r_\u0410ttack_animation_0": -1009694635
-      "r_\u0410ttack_animation_1": 2049553872
-      "r_\u0410ttack_animation_2": -1169774426
-      "r_\u0410ttack_animation_3": 1829959873
-      "r_\u0410ttack_animation_4": -1383140890
-      "r_\u0410ttack_animation_5": -320509652
+      r_Run_animation_0: 95239542
+      r_Run_animation_1: 868192547
+      r_Run_animation_2: 1094639001
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

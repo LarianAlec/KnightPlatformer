@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InteractableComponent : MonoBehaviour
+namespace KnightPlatformer.Components
 {
-    [SerializeField] private UnityEvent _action;
-
-    public void Interact()
+    public class InteractableComponent : MonoBehaviour
     {
-        _action?.Invoke();
-    }
+        [SerializeField] private UnityEvent _action;
 
+        public void Interact()
+        {
+            _action?.Invoke();
+        }
+
+    }
 }

@@ -14,8 +14,6 @@ namespace KnightPlatformer.Components
             spawner?.Component.Spawn();
         }
 
-
-
         [Serializable] 
         public class SpawnData
         {
