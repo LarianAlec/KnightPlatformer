@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7286180280553331464}
   - component: {fileID: 4216961219909514468}
   - component: {fileID: 1073052815901686505}
+  - component: {fileID: 8727627235167754810}
   m_Layer: 10
   m_Name: PinkSlime
   m_TagString: Enemy
@@ -36,12 +37,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1235778132277255366}
   - {fileID: 7098670917851392062}
   - {fileID: 6545360669518517253}
   - {fileID: 5719973573121294839}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6076589566612921411
 SpriteRenderer:
@@ -208,7 +208,19 @@ MonoBehaviour:
         m_CallState: 1
   _onDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1073052815901686505}
+        m_TargetAssemblyTypeName: KnightPlatformer.Creatures.MobAI, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -243,6 +255,7 @@ MonoBehaviour:
   _speed: 5
   _jumpSpeed: 10
   _damageVelocity: 7
+  _invertScale: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -262,54 +275,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vision: {fileID: 2708929865482464225}
-  _attackRange: {fileID: 6641853787840473482}
-  _alarmDelay: 1
---- !u!1 &2656431544360859164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1235778132277255366}
-  - component: {fileID: 7422781135462659328}
-  m_Layer: 10
-  m_Name: JumpParticlePositionSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1235778132277255366
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2656431544360859164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.753, y: -0.4, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1495347511681028203}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7422781135462659328
+  _canAttack: {fileID: 6641853787840473482}
+  _alarmDelay: 0.3
+  _attackCooldown: 1
+--- !u!114 &8727627235167754810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2656431544360859164}
+  m_GameObject: {fileID: 2590621640256777836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a674c317ea4eb98478c1744cce8e0a0f, type: 3}
+  m_Script: {fileID: 11500000, guid: dc96be78f2315e841abc57dd768acd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 1235778132277255366}
-  _prefab: {fileID: 3094310956596165946, guid: 8684e61efd3f6a54d98f4d4df188cb01, type: 3}
+  _points:
+  - {fileID: 0}
+  - {fileID: 0}
+  _threshold: 0.2
 --- !u!1 &3035377479550263347
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +522,7 @@ GameObject:
   - component: {fileID: 5719973573121294839}
   - component: {fileID: 829837240708378851}
   - component: {fileID: 2708929865482464225}
+  - component: {fileID: 8975366904697368760}
   m_Layer: 10
   m_Name: Vision
   m_TagString: Untagged
@@ -603,7 +588,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 3}
+  m_Size: {x: 10, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &2708929865482464225
 MonoBehaviour:
@@ -621,3 +606,31 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _isTouchingLayer: 0
+--- !u!114 &8975366904697368760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714608829340300194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e1396c2170545469cf25d0917e53cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: Player
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1073052815901686505}
+        m_TargetAssemblyTypeName: KnightPlatformer.Creatures.MobAI, Assembly-CSharp
+        m_MethodName: OnHeroInVision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

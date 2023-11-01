@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 namespace KnightPlatformer.Creatures
 {
-
     public class MobAI : MonoBehaviour
     {
         [SerializeField] LayerCheck _vision;
@@ -19,34 +17,37 @@ namespace KnightPlatformer.Creatures
         private Components.SpawnListComponent _particles;
 
         private bool _isDead = false;
+        private static readonly int DeadKey = Animator.StringToHash("is-dead");
+        private Animator _animator;
+        private Patrol _patrol;
 
         private void Awake()
         {
             _particles = GetComponent<Components.SpawnListComponent>();
             _creature = GetComponent<Creature>();
+            _animator = GetComponent<Animator>();
+            _patrol = GetComponent<Patrol>();
         }
 
         private void Start()
         {
-            StartState(Patrolling());
+            StartState(_patrol.DoPatrol());
         }
 
         private void StartState(IEnumerator coroutine)
         {
             _creature.SetDirection(Vector2.zero);
+
             if (_current != null)
                 StopCoroutine(_current);
 
             _current = StartCoroutine(coroutine);
         }
 
-        private IEnumerator Patrolling()
-        {
-            yield return null;
-        }
-
         public void OnHeroInVision(GameObject go)
         {
+            if (_isDead) return;
+
             _target = go;
             StartState(AgroToHero());
         }
@@ -74,6 +75,7 @@ namespace KnightPlatformer.Creatures
                 yield return null;
             }
 
+            StartState(_patrol.DoPatrol());
         }
 
         private void SetDirectionToTarget()
@@ -92,6 +94,15 @@ namespace KnightPlatformer.Creatures
             }
 
             StartState(GoToHero());
+        }
+
+        public void Die()
+        {
+            _isDead = true;
+            _animator.SetBool(DeadKey, _isDead);
+
+            if (_current != null)
+                StopCoroutine(_current);
         }
     }
 }

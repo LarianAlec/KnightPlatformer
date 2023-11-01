@@ -10,12 +10,14 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private UnityEvent _onHeal;
     [SerializeField] private HealthChangeEvent _onChange;
 
+    private bool _isDead = false;
+
     public void ModifyHealth(int healthDelta)
     {
         _health += healthDelta;
         _onChange?.Invoke(_health);
 
-        if (healthDelta < 0)
+        if (healthDelta < 0 && !_isDead)
         {
             _onDamage?.Invoke();
         }
@@ -25,9 +27,10 @@ public class HealthComponent : MonoBehaviour
             _onHeal?.Invoke();
         }
 
-        if (_health <=0)
+        if (_health <=0 && !_isDead)
         {
             _onDie?.Invoke();
+            _isDead = true;
         }
     }
 
