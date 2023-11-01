@@ -12,6 +12,7 @@ namespace KnightPlatformer.Creatures
         [SerializeField] private float _speed = 5.0f;
         [SerializeField] protected float _jumpSpeed = 10f;
         [SerializeField] private float _damageVelocity = 5f;
+        [SerializeField] private bool _invertScale = false;
 
         [Space]
         [Header("Checkers")]
@@ -100,15 +101,16 @@ namespace KnightPlatformer.Creatures
 
         private void UpdateSpriteDirection()
         {
+            var multiplier = _invertScale ? -1 : 1;
             if (Direction.x > 0)
             {
                 //TurnRight
-                transform.localScale = Vector3.one;
+                transform.localScale = new Vector3(multiplier * 1, 1, 1);
             }
             else if (Direction.x < 0)
             {
                 //TurnLeft
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(multiplier * -1, 1, 1);
             }
         }
 
